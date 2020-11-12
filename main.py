@@ -1,11 +1,11 @@
 # coding: UTF-8
 import discord
 from discord.ext import commands
-import os
-import pathlib
 from utils import cog_loader as loader
 
-TOKEN = os.environ['TOKEN']
+with open("token.txt") as f: #Temporary text file to increase development efficiency
+    TOKEN = f.read()
+
 command_prefix = ['!'] #Prefix
 
 class MyBot(commands.Bot):
@@ -30,8 +30,11 @@ class MyBot(commands.Bot):
         else:
             print('The start up process is already complete!')
 
+#This bot will use presence intent and members intent.
+intent: discord.Intents = discord.Intents.default() 
+intent.presences = True 
+intent.members = True
 
-intent: discord.Intents = discord.Intents.default()
 bot = MyBot(command_prefix=command_prefix, intent=intent)
 
 bot.run(TOKEN)
