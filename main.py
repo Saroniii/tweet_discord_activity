@@ -1,11 +1,12 @@
 # coding: UTF-8
 import discord
 from discord.ext import commands
-from utils import cog_loader as loader
 
-with open("token.txt") as f: #Temporary text file to increase development efficiency
-    TOKEN = f.read()
+import configs.token as token
+from utils import Tweet as tweet
+from utils import CogLoader as loader
 
+TOKEN = token.TOKEN #TOKEN load from token.py
 command_prefix = ['!'] #Prefix
 
 class MyBot(commands.Bot):
@@ -14,7 +15,7 @@ class MyBot(commands.Bot):
         super().__init__(*args, **kwargs)
 
     async def on_ready(self):
-
+        await tweet().tweet("test")
         if self.ready_check == False:
 
             print('Logged in as')
