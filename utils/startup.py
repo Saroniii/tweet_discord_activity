@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from utils import StartupError, Check as check
 
-class startup:
+class Startup:
 
     def __init__(self):
         self.check = check()
