@@ -8,7 +8,7 @@ class Check:
     def __init__(self):
         pass
 
-    async def get_bot_owner(self, bot :commands.Bot) -> discord.AppInfo:
+    async def get_bot_owner(self, bot :commands.Bot) -> discord.User:
         """
         Return bot owner.
         """
