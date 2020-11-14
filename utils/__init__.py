@@ -3,3 +3,4 @@ from utils.cog_loader import *
 from utils.error import *
 from utils.startup import *
 from utils.tweet import *
+from utils.get_activity import *
