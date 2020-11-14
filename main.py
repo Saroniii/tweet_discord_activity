@@ -2,9 +2,12 @@
 import discord
 from discord.ext import commands
 
+import configs.twitter as twitter
 import configs.token as token
 from utils import Tweet as tweet
 from utils import CogLoader as loader
+from utils import Check as check
+import configs.twitter as config
 
 TOKEN = token.TOKEN #TOKEN load from token.py
 command_prefix = ['!'] #Prefix
@@ -15,7 +18,8 @@ class MyBot(commands.Bot):
         super().__init__(*args, **kwargs)
 
     async def on_ready(self):
-        await tweet().tweet("test")
+        owner = await check().get_bot_owner(self)
+        await check().can_startup(owner=owner, bot=self)
         if self.ready_check == False:
 
             print('Logged in as')
@@ -27,15 +31,13 @@ class MyBot(commands.Bot):
 
             print('------')
             self.ready_check = True
-        
+            self.lang = twitter.LANG
+            self.owner = owner
         else:
             print('The start up process is already complete!')
 
 #This bot will use presence intent and members intent.
-intent: discord.Intents = discord.Intents.default() 
-intent.presences = True 
-intent.members = True
-
-bot = MyBot(command_prefix=command_prefix, intent=intent)
+intent: discord.Intents = discord.Intents.all()
+bot = MyBot(command_prefix=command_prefix, intents=intent)
 
 bot.run(TOKEN)
