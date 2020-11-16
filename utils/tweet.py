@@ -5,7 +5,6 @@ from authlib.client.aiohttp import AsyncOAuth1Client, OAuthRequest
 import configs.twitter as twitter
 import discord
 from datetime import date, datetime
-import pytz
 
 class Tweet:
 

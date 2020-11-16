@@ -32,14 +32,12 @@ class Cog(commands.Cog):
                     after_flag = check[1]
                     break
             
-            print(type(before_flag))
-            print(type(after_flag))
             status_type = None
             activity_name = None
             status_name = None 
             sentence = None
 
-            if any([type(i) in [discord.Game, discord.Streaming, discord.CustomActivity] for i in [before_flag,after_flag]]):
+            if any([type(i) in [discord.Game, discord.Streaming, discord.CustomActivity, discord.activity.Activity] for i in [before_flag,after_flag]]):
                 
                 if not before_flag or before_flag and after_flag is not None:
                     status_type = 'activity_start'
@@ -48,7 +46,7 @@ class Cog(commands.Cog):
                 elif not after_flag:
                     status_type = 'activity_end'
                     activity_name = before_flag.name
-            
+
             else:
 
                 status_type = 'status'
