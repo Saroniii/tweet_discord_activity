@@ -3,13 +3,12 @@ import discord
 from discord.ext import commands
 
 import configs.twitter as twitter
-import configs.token as token
-from utils import Tweet as tweet
 from utils import CogLoader as loader
 from utils import Check as check
+from utils import Startup as startup
 import configs.twitter as config
 
-TOKEN = token.TOKEN #TOKEN load from token.py
+TOKEN = startup().get_token()
 command_prefix = ['!'] #Prefix
 
 class MyBot(commands.Bot):
