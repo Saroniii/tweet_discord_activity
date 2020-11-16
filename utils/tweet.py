@@ -59,8 +59,3 @@ class Tweet:
 
         return sentence
 
-    def get_timezone(self):
-        tz = twitter.TIMEZONE
-        if not tz:
-            tz = 'utc'
-        return pytz.timezone(tz)
