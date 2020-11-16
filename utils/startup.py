@@ -1,6 +1,8 @@
+from configs.token import TOKEN
 import discord
 from discord.ext import commands
 from utils import StartupError, Check as check
+import os
 
 class Startup:
 
@@ -19,3 +21,25 @@ class Startup:
             raise StartupError(startup_check[1])
 
         return owner
+
+    def get_token(self) -> str:
+        """
+        Get token.
+        """
+
+        try:
+            token = os.environ["TOKEN"]
+        except:
+            pass
+
+        if not token:
+            
+            try:
+                import configs.token
+                token = configs.token.TOKEN
+                if len(token) == 0:
+                    raise StartupError('Activity bot token was not found.')
+            
+            except:
+                raise StartupError('Activity bot token was not found.')
+
