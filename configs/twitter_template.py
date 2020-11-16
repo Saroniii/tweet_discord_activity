@@ -8,4 +8,4 @@ START_ACTIVITY_TWEET = "(owner) has started the activity of Discord to (activity
 END_ACTIVITY_TWEET = "(owner) has ended (activity) of Discord."
 ACTIVITY_BOT_START_TWEET = "Check activity bot was started."
 
-LANG = 'ja'
+LANG = 'en'
