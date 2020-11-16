@@ -129,5 +129,4 @@ dmypy.json
 .pyre/
 
 #For get activity bot file
-token.py
 configs/twitter.py

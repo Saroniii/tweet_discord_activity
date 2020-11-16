@@ -1,0 +1,1 @@
+TOKEN = '' # If you set token environment variable(key=TOKEN), you don't have to set token this variable.
