@@ -47,7 +47,7 @@ class Cog(commands.Cog):
                     status_type = 'activity_end'
                     activity_name = before_flag.name
 
-            elif before_flag and after_flag is None:
+            elif before_flag is None and after_flag is None:
                 return
                     
             else:
