@@ -1,6 +1,6 @@
+import os
 from typing import Tuple
 import discord
-from discord.appinfo import AppInfo
 from discord.ext import commands
 
 class Check:
@@ -12,7 +12,7 @@ class Check:
         """
         Return bot owner.
         """
-        appinfo :AppInfo = await bot.application_info()
+        appinfo :discord.AppInfo = await bot.application_info()
         return appinfo.owner
 
     async def can_startup(self, owner :discord.User, bot :commands.Bot) -> Tuple:
@@ -29,6 +29,9 @@ class Check:
 
         if bot.intents != discord.Intents.all():
             return False, "Bot intents must be enable all."
+
+        if not os.path.isfile('configs/twitter.py'):
+            return False, "Activity bot can't found twitter data file."
 
         return True, "Startup check is success."
         
