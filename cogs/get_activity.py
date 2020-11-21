@@ -37,6 +37,13 @@ class Cog(commands.Cog):
             status_name = None 
             sentence = None
 
+            try:
+                if before_flag.name == after_flag.name:
+                    return
+            
+            except:
+                pass
+
             if any([type(i) in [discord.Game, discord.Streaming, discord.CustomActivity, discord.activity.Activity] for i in [before_flag,after_flag]]):
                 
                 if not before_flag or before_flag and after_flag is not None:
@@ -54,7 +61,6 @@ class Cog(commands.Cog):
 
                 status_type = 'status'
                 status_name = self.get_activity.get_status(after_flag, self.bot.lang)
-
 
             if status_type == 'activity_start':
                 
