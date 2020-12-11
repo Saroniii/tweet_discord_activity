@@ -57,3 +57,4 @@ If not...
 
 ## I got it up! I want to change the message in my activity tweet, how do I do it?
 
+Check out [variable docs](https://github.com/Saroniii/tweet_discord_activity/blob/main/docs/variables.md)
